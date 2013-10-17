@@ -136,6 +136,7 @@ GLfloat gCubeVertexData[216] =
     if (_mp4Writer)
     {
       [_mp4Writer stop];
+      _mp4Writer = NULL;
     }
   }
 }

@@ -79,6 +79,11 @@
 
 -(void) stop
 {
+  if(!_isStarted)
+  {
+    return;
+  }
+  
   _isStarted = NO;
   
   [_videoWriterInput markAsFinished];
