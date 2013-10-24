@@ -1,13 +1,10 @@
 gl2mp4
 ======
 
-Generate MP4 video from GL frame
+Generate MOV file from GL frame and mic voice
 
-Not contain Audio
+LAVF
 
+video: H264, 640X960, 30.0FPS
+audio: MP4A, 44.1khz, 16bit, 2channles
 
-glReadPixel RGBA8888 640*960
-18ms average
-
-add void frame into mp4 RGBA8888 640*960
-13ms average
