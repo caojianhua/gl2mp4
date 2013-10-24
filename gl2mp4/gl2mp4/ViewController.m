@@ -12,7 +12,9 @@
 #import "util.h"
 #import <AVFoundation/AVFoundation.h>
 
-#import "Mp4Writer.h"
+#import "MediaFileMixer.h"
+#import "VideoRecorder.h"
+#import "AudioRecorder.h"
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
@@ -91,7 +93,8 @@ GLfloat gCubeVertexData[216] =
   GLuint _vertexArray;
   GLuint _vertexBuffer;
   
-  Mp4Writer* _mp4Writer;
+  VideoRecorder* _videoRecorder;
+  AudioRecorder* _audioRecorder;
 
   UIButton *_startRecordButton;
   UIButton *_stopRecordButton;
@@ -117,27 +120,46 @@ GLfloat gCubeVertexData[216] =
 {
   UIButton* button = (UIButton*)sender;
   int clickTag = button.tag;
+  
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+  NSString *documentsDirectory = [paths objectAtIndex:0];
+  
+  NSString *videoFileName = [documentsDirectory stringByAppendingString:@"/gl_video.mp4"];
+  NSString *audioFileName = [documentsDirectory stringByAppendingString:@"/gl_audio.caf"];
+  NSString *movFileName = [documentsDirectory stringByAppendingString:@"/gl.mov"];
+  
+  
   if(clickTag == 1001)
   {
     // start record GL
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
+    _videoRecorder = [[VideoRecorder alloc] initWithPath:videoFileName];
+    _audioRecorder = [[AudioRecorder alloc] initWithPath:audioFileName];
+
+    [_videoRecorder prepare];
+    [_audioRecorder prepare];
     
-    NSString *fileName = [documentsDirectory stringByAppendingString:@"/gl.mp4"];
-    
-    _mp4Writer = [[Mp4Writer alloc] initWidthPath:fileName];
-    [_mp4Writer prepare];
-    [_mp4Writer start];
+    [_videoRecorder start];
+    [_audioRecorder startRecord];
   }
   
   if(clickTag == 1002)
   {
     // stop record GL
-    if (_mp4Writer)
+    if (_videoRecorder)
     {
-      [_mp4Writer stop];
-      _mp4Writer = NULL;
+      [_videoRecorder stop];
+      _videoRecorder = NULL;
     }
+    
+    if (_audioRecorder)
+    {
+      [_audioRecorder stopRecord];
+      //_audioRecorder = NULL;
+    }
+
+    [[NSFileManager defaultManager] removeItemAtPath:movFileName error:nil];
+    [MediaFileMixer mixAduio:audioFileName video:videoFileName toMov:movFileName];
+    NSLog(@"Mov file generate finish");
   }
 }
 
@@ -155,6 +177,7 @@ GLfloat gCubeVertexData[216] =
   GLKView *view = (GLKView *)self.view;
   view.context = self.context;
   view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+//  view.drawableColorFormat = GLKViewDrawableColorFormatRGB565;
   view.drawableColorFormat = GLKViewDrawableColorFormatRGBA8888;
   
   CAEAGLLayer *eaglLayer = (CAEAGLLayer*)view.layer;
@@ -194,7 +217,7 @@ GLfloat gCubeVertexData[216] =
   
   _pixelBuffer8888 = (Byte*)malloc(640 * 960 * 4);
   
-  _mp4Writer = NULL;
+  _videoRecorder = NULL;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -326,19 +349,18 @@ GLfloat gCubeVertexData[216] =
   glUniformMatrix3fv(uniforms[UNIFORM_NORMAL_MATRIX], 1, 0, _normalMatrix.m);
   
   glDrawArrays(GL_TRIANGLES, 0, 36);
-  
+
   [self glSaveFrameWithWidth:640 Height:960];
 }
 
 -(BOOL)glSaveFrameWithWidth : (int)width Height : (int)height
 {
-  // 读取像素
-  glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+  //glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
   glReadPixels(0, 0, width, height, GL_BGRA_EXT, GL_UNSIGNED_BYTE, _pixelBuffer8888);
   
-  if(_mp4Writer && _mp4Writer.isStarted)
+  if(_videoRecorder && _videoRecorder.isStarted)
   {
-    [_mp4Writer addVideoFrameIntoMp4:_pixelBuffer8888 width:width height:height];
+    [_videoRecorder addVideoFrameIntoMp4:_pixelBuffer8888 width:width height:height];
   }
   return YES;
 }

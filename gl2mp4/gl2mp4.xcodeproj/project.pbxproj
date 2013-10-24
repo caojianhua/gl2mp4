@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		519E3177181670C000BE9582 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519E3176181670C000BE9582 /* AudioToolbox.framework */; };
+		519E317A1817912000BE9582 /* MediaFileMixer.m in Sources */ = {isa = PBXBuildFile; fileRef = 519E31791817912000BE9582 /* MediaFileMixer.m */; };
+		519E317D1817C0C000BE9582 /* AudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 519E317C1817C0C000BE9582 /* AudioRecorder.m */; };
 		E10B30B7180FE23500190499 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10B30B6180FE23500190499 /* UIKit.framework */; };
 		E10B30B9180FE23500190499 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10B30B8180FE23500190499 /* Foundation.framework */; };
 		E10B30BB180FE23500190499 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10B30BA180FE23500190499 /* CoreGraphics.framework */; };
@@ -21,8 +24,8 @@
 		E10B30D3180FE23600190499 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E10B30D2180FE23600190499 /* Shader.fsh */; };
 		E10B30D5180FE23600190499 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E10B30D4180FE23600190499 /* Shader.vsh */; };
 		E10B30DB180FE23600190499 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10B30D9180FE23600190499 /* ViewController.xib */; };
-		E10B30E5180FE27100190499 /* Mp4Writer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E10B30E2180FE27100190499 /* Mp4Writer.mm */; };
-		E10B30E6180FE27100190499 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E10B30E4180FE27100190499 /* ViewController.mm */; };
+		E10B30E5180FE27100190499 /* VideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B30E2180FE27100190499 /* VideoRecorder.m */; };
+		E10B30E6180FE27100190499 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B30E4180FE27100190499 /* ViewController.m */; };
 		E10B30E8180FE2CF00190499 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10B30E7180FE2CF00190499 /* CoreVideo.framework */; };
 		E10B30EA180FE2D900190499 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10B30E9180FE2D900190499 /* CoreMedia.framework */; };
 		E10B30EC180FE2E300190499 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10B30EB180FE2E300190499 /* AVFoundation.framework */; };
@@ -30,6 +33,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		519E31741816704B00BE9582 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		519E3176181670C000BE9582 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		519E31781817912000BE9582 /* MediaFileMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFileMixer.h; sourceTree = "<group>"; };
+		519E31791817912000BE9582 /* MediaFileMixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFileMixer.m; sourceTree = "<group>"; };
+		519E317B1817C0C000BE9582 /* AudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecorder.h; sourceTree = "<group>"; };
+		519E317C1817C0C000BE9582 /* AudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecorder.m; sourceTree = "<group>"; };
 		E10B30B3180FE23500190499 /* gl2mp4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gl2mp4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10B30B6180FE23500190499 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E10B30B8180FE23500190499 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,10 +57,10 @@
 		E10B30D2180FE23600190499 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		E10B30D4180FE23600190499 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		E10B30DA180FE23600190499 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		E10B30E1180FE27100190499 /* Mp4Writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mp4Writer.h; sourceTree = "<group>"; };
-		E10B30E2180FE27100190499 /* Mp4Writer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Mp4Writer.mm; sourceTree = "<group>"; };
+		E10B30E1180FE27100190499 /* VideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRecorder.h; sourceTree = "<group>"; };
+		E10B30E2180FE27100190499 /* VideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRecorder.m; sourceTree = "<group>"; };
 		E10B30E3180FE27100190499 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E10B30E4180FE27100190499 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		E10B30E4180FE27100190499 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E10B30E7180FE2CF00190499 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		E10B30E9180FE2D900190499 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E10B30EB180FE2E300190499 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -63,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				519E3177181670C000BE9582 /* AudioToolbox.framework in Frameworks */,
 				E10B30EE180FE2EA00190499 /* QuartzCore.framework in Frameworks */,
 				E10B30EC180FE2E300190499 /* AVFoundation.framework in Frameworks */,
 				E10B30EA180FE2D900190499 /* CoreMedia.framework in Frameworks */,
@@ -98,6 +108,8 @@
 		E10B30B5180FE23500190499 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				519E3176181670C000BE9582 /* AudioToolbox.framework */,
+				519E31741816704B00BE9582 /* CoreAudio.framework */,
 				E10B30ED180FE2EA00190499 /* QuartzCore.framework */,
 				E10B30EB180FE2E300190499 /* AVFoundation.framework */,
 				E10B30E9180FE2D900190499 /* CoreMedia.framework */,
@@ -114,16 +126,20 @@
 		E10B30C0180FE23500190499 /* gl2mp4 */ = {
 			isa = PBXGroup;
 			children = (
-				E10B30E1180FE27100190499 /* Mp4Writer.h */,
-				E10B30E2180FE27100190499 /* Mp4Writer.mm */,
+				E10B30E1180FE27100190499 /* VideoRecorder.h */,
+				E10B30E2180FE27100190499 /* VideoRecorder.m */,
+				519E317B1817C0C000BE9582 /* AudioRecorder.h */,
+				519E317C1817C0C000BE9582 /* AudioRecorder.m */,
 				E10B30E3180FE27100190499 /* ViewController.h */,
-				E10B30E4180FE27100190499 /* ViewController.mm */,
+				E10B30E4180FE27100190499 /* ViewController.m */,
 				E10B30C9180FE23500190499 /* AppDelegate.h */,
 				E10B30CA180FE23500190499 /* AppDelegate.m */,
 				E10B30D2180FE23600190499 /* Shader.fsh */,
 				E10B30D4180FE23600190499 /* Shader.vsh */,
 				E10B30D9180FE23600190499 /* ViewController.xib */,
 				E10B30C1180FE23500190499 /* Supporting Files */,
+				519E31781817912000BE9582 /* MediaFileMixer.h */,
+				519E31791817912000BE9582 /* MediaFileMixer.m */,
 			);
 			path = gl2mp4;
 			sourceTree = "<group>";
@@ -211,9 +227,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E10B30C7180FE23500190499 /* main.m in Sources */,
+				519E317A1817912000BE9582 /* MediaFileMixer.m in Sources */,
 				E10B30CB180FE23500190499 /* AppDelegate.m in Sources */,
-				E10B30E5180FE27100190499 /* Mp4Writer.mm in Sources */,
-				E10B30E6180FE27100190499 /* ViewController.mm in Sources */,
+				519E317D1817C0C000BE9582 /* AudioRecorder.m in Sources */,
+				E10B30E5180FE27100190499 /* VideoRecorder.m in Sources */,
+				E10B30E6180FE27100190499 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +316,7 @@
 		E10B30DF180FE23600190499 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Quanlong He (768DQ9ZA85)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gl2mp4/gl2mp4-Prefix.pch";
 				INFOPLIST_FILE = "gl2mp4/gl2mp4-Info.plist";
@@ -309,6 +328,7 @@
 		E10B30E0180FE23600190499 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Quanlong He (768DQ9ZA85)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gl2mp4/gl2mp4-Prefix.pch";
 				INFOPLIST_FILE = "gl2mp4/gl2mp4-Info.plist";
@@ -336,6 +356,7 @@
 				E10B30E0180FE23600190499 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
